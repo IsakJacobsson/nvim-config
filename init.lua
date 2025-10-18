@@ -8,10 +8,10 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
-require 'set'
+require 'config.set'
 
 -- [[ Basic Keymaps ]]
-require 'remap'
+require 'config.remap'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 require 'config.lazy'
