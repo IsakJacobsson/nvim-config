@@ -9,6 +9,10 @@ vim.g.maplocalleader = ' '
 -- Show netrw (neovim built in file explorer)
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
+-- Centers cursor on screen after scrolling
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
