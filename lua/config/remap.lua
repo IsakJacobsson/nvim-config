@@ -1,6 +1,11 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Set <space> as the leader key
+-- See `:help mapleader`
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Show netrw (neovim built in file explorer)
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
