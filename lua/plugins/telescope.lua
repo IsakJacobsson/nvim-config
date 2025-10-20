@@ -9,7 +9,23 @@ return {
         },
         config = function()
             -- See `:help telescope` and `:help telescope.setup()`
-            require("telescope").setup({})
+            require("telescope").setup({
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<C-k>"] = require("telescope.actions").move_selection_previous,
+                            ["<C-j>"] = require("telescope.actions").move_selection_next,
+                            ["<C-l>"] = require("telescope.actions").select_default,
+                        },
+                    },
+                },
+                pickers = {
+                    find_files = {
+                        file_ignore_patterns = { "node_modules", ".git", ".venv" },
+                        hidden = true,
+                    },
+                },
+            })
 
             -- See `:help telescope.builtin`
             local builtin = require("telescope.builtin")
