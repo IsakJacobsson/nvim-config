@@ -8,4 +8,4 @@ require("config.remap")
 require("config.lazy")
 
 -- [[ Configure and install all plugins ]]
-require("Lazy").setup("plugins")
+require("lazy").setup("plugins")
