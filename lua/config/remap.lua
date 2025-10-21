@@ -12,9 +12,15 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- Show netrw (neovim built in file explorer)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- Centers cursor on screen after scrolling
+-- Centers cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Move selected lines up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`

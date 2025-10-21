@@ -90,7 +90,9 @@ return {
                     -- Jump to the definition of the word under your cursor.
                     --  This is where a variable was first declared, or where a function is defined, etc.
                     --  To jump back, press <C-t>.
-                    map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+                    map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+
+                    map("K", vim.lsp.buf.hover, "Show symbol info")
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
@@ -128,8 +130,16 @@ return {
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-                        local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+                    if
+                        client
+                        and client_supports_method(
+                            client,
+                            vim.lsp.protocol.Methods.textDocument_documentHighlight,
+                            event.buf
+                        )
+                    then
+                        local highlight_augroup =
+                            vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
                         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                             buffer = event.buf,
                             group = highlight_augroup,
@@ -155,7 +165,10 @@ return {
                     -- code, if the language server you are using supports them
                     --
                     -- This may be unwanted, since they displace some of your code
-                    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+                    if
+                        client
+                        and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+                    then
                         map("<leader>th", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
                         end, "[T]oggle Inlay [H]ints")
@@ -230,7 +243,6 @@ return {
                             completion = {
                                 callSnippet = "Replace",
                             },
-                            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             -- diagnostics = { disable = { 'missing-fields' } },
                         },
                     },
