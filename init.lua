@@ -9,3 +9,6 @@ require("config.lazy")
 
 -- [[ Configure and install all plugins ]]
 require("lazy").setup("plugins")
+
+-- [[ Configure lsp ]]
+require("config.lsp")
