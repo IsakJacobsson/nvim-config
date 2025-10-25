@@ -11,6 +11,7 @@ return {
             require("tokyonight").setup({
                 styles = {
                     comments = { italic = false }, -- Disable italics in comments
+                    floats = "transparent",
                 },
             })
 
