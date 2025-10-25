@@ -33,10 +33,7 @@ return {
             vim.keymap.set("n", "<C-p>", builtin.git_files, {})
             vim.keymap.set("n", "<leader>sg", builtin.live_grep, {}) -- Requires ripgrep
             vim.keymap.set("n", "<leader>sb", builtin.buffers, {})
-            vim.keymap.set("n", "<leader>sw", function()
-                local word = vim.fn.expand("<cword>")
-                builtin.grep_string({ search = word })
-            end)
+            vim.keymap.set("n", "<leader>sw", builtin.grep_string, {})
             vim.keymap.set("n", "<leader>sW", function()
                 local word = vim.fn.expand("<cWORD>")
                 builtin.grep_string({ search = word })
