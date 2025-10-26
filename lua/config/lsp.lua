@@ -1,4 +1,12 @@
-vim.lsp.enable({ "lua_ls", "pyright", "bashls" })
+-- Enable all lsp server with config in /lsp
+local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+local files = vim.fn.glob(lsp_dir .. "/*", false, true)
+local servers = {}
+for _, file in ipairs(files) do
+    local name = vim.fn.fnamemodify(file, ":t:r") -- :t = tail, :r = root (remove extension)
+    table.insert(servers, name)
+end
+vim.lsp.enable(servers)
 
 --  This function gets run when an LSP attaches to a particular buffer.
 --    That is to say, every time a new file is opened that is associated with
@@ -51,14 +59,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --  the definition of its *type*, not where it was *defined*.
         map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
-        if client and client:supports_method("textDocument/documentHighlight") then
+        if client:supports_method("textDocument/documentHighlight") then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = event.buf,
@@ -85,7 +93,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
-        if client and client:supports_method("textDocument/inlayHint") then
+        if client:supports_method("textDocument/inlayHint") then
             map("<leader>th", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "[T]oggle Inlay [H]ints")
