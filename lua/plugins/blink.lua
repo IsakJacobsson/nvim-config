@@ -79,6 +79,9 @@ return {
                 documentation = { auto_show = false, auto_show_delay_ms = 500 },
                 -- Scrollbar doesnt look good with menu border
                 menu = { scrollbar = false },
+                -- Disable auto brackets
+                -- NOTE: some LSPs may add auto brackets themselves anyway, e.g., clangd
+                accept = { auto_brackets = { enabled = true }, },
             },
 
             sources = {

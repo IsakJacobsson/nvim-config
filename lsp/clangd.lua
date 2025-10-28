@@ -3,7 +3,9 @@
 
 ---@type vim.lsp.Config
 return {
-    cmd = { 'clangd' },
+    -- function-arg-placeholders=0 disables argument placeholders when accepting auto complete
+    cmd = { 'clangd', "--function-arg-placeholders=0" },
+
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
     root_markers = {
         '.clangd',
