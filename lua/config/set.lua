@@ -84,4 +84,8 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Globaly set rounded borders to windows
 vim.o.winborder = "rounded"
+
+-- Underline incorrectly spelled words
+vim.o.spell = true
