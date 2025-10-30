@@ -81,7 +81,7 @@ return {
                 menu = { scrollbar = false },
                 -- Disable auto brackets
                 -- NOTE: some LSPs may add auto brackets themselves anyway, e.g., clangd
-                accept = { auto_brackets = { enabled = true }, },
+                accept = { auto_brackets = { enabled = false }, },
             },
 
             sources = {
