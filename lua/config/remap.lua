@@ -8,6 +8,7 @@ vim.g.maplocalleader = " "
 
 -- Exit normal mode quickly
 vim.keymap.set("i", "jk", "<Esc>")
+vim.keymap.set("i", "kj", "<Esc>")
 
 -- Show netrw (neovim built in file explorer)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
