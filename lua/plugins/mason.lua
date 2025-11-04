@@ -11,6 +11,15 @@ return {
     },
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
+        {
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            opts = {
+                ensure_installed = {
+                    "isort",
+                    "black",
+                },
+            },
+        },
         "neovim/nvim-lspconfig",
     },
 }
