@@ -13,9 +13,8 @@ return {
                 defaults = {
                     mappings = {
                         i = {
-                            ["<C-k>"] = require("telescope.actions").move_selection_previous,
-                            ["<C-j>"] = require("telescope.actions").move_selection_next,
-                            ["<C-l>"] = require("telescope.actions").select_default,
+                            ["<C-p>"] = require("telescope.actions").move_selection_previous,
+                            ["<C-n>"] = require("telescope.actions").move_selection_next,
                         },
                     },
                 },
@@ -31,10 +30,10 @@ return {
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
             vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-            vim.keymap.set("n", "<leader>sg", builtin.live_grep, {})   -- Requires ripgrep
+            vim.keymap.set("n", "<leader>sg", builtin.live_grep, {}) -- Requires ripgrep
             vim.keymap.set("n", "<leader>sb", builtin.buffers, {})
             vim.keymap.set("n", "<leader>sw", builtin.grep_string, {}) -- Requires ripgrep
-            vim.keymap.set("n", "<leader>sW", function()               -- Requires ripgrep
+            vim.keymap.set("n", "<leader>sW", function() -- Requires ripgrep
                 local word = vim.fn.expand("<cWORD>")
                 builtin.grep_string({ search = word })
             end)
