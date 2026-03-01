@@ -4,20 +4,13 @@ return {
         event = "VimEnter",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             -- Adds file icons in file list
             { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
         },
         config = function()
             -- See `:help telescope` and `:help telescope.setup()`
             require("telescope").setup({
-                defaults = {
-                    mappings = {
-                        i = {
-                            ["<C-p>"] = require("telescope.actions").move_selection_previous,
-                            ["<C-n>"] = require("telescope.actions").move_selection_next,
-                        },
-                    },
-                },
                 pickers = {
                     find_files = {
                         file_ignore_patterns = { "node_modules", ".git", ".venv", "__pycache__" },
