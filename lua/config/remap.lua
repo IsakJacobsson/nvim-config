@@ -6,9 +6,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Exit normal mode quickly
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("i", "kj", "<Esc>")
+-- Exit insert and visual modes quickly
+for _, mode in ipairs({ "i", "v" }) do
+    vim.keymap.set(mode, "jk", "<Esc>")
+    vim.keymap.set(mode, "kj", "<Esc>")
+end
 
 -- Show netrw (neovim built in file explorer)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
