@@ -13,7 +13,7 @@ for _, mode in ipairs({ "i", "v" }) do
 end
 
 -- Show netrw (neovim built in file explorer)
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- Centers cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
