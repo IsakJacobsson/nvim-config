@@ -21,15 +21,15 @@ return {
 
             -- See `:help telescope.builtin`
             local builtin = require("telescope.builtin")
-            vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
-            vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-            vim.keymap.set("n", "<leader>sg", builtin.live_grep, {}) -- Requires ripgrep
-            vim.keymap.set("n", "<leader>sb", builtin.buffers, {})
-            vim.keymap.set("n", "<leader>sw", builtin.grep_string, {}) -- Requires ripgrep
-            vim.keymap.set("n", "<leader>sW", function() -- Requires ripgrep
+            vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+            vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+            vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+            vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Telescope search word under cursor" }) -- Requires ripgrep
+            vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Telescope keymaps" })
+            vim.keymap.set("n", "<leader>fW", function() -- Requires ripgrep
                 local word = vim.fn.expand("<cWORD>")
                 builtin.grep_string({ search = word })
-            end)
+            end, { desc = "Telescope search WORD under cursor" })
         end,
     },
 }
