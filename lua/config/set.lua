@@ -89,3 +89,10 @@ vim.o.winborder = "rounded"
 
 -- Underline incorrectly spelled words
 vim.o.spell = true
+
+-- Auto-reload files changed externally (polls every second)
+vim.o.autoread = true
+local timer = vim.uv.new_timer()
+timer:start(0, 1000, vim.schedule_wrap(function()
+  vim.cmd("silent! checktime")
+end))
