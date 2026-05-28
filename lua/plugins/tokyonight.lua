@@ -5,6 +5,7 @@ return {
         config = function()
             ---@diagnostic disable-next-line: missing-fields
             require("tokyonight").setup({
+                transparent = true,
                 styles = {
                     -- Floating windows will have same background as nvim.
                     -- E.g., Telescope or auto complete menu.
