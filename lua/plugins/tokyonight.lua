@@ -71,7 +71,7 @@ return {
                     colors.diff = {
                       add = "#bed8cd",
                       change = "#93c0af",
-                      delete = "#d7e4dd",
+                      delete = "#f4d6d6",
                       text = "#93c0af",
                     }
 
