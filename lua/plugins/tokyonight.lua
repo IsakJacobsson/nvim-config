@@ -247,7 +247,7 @@ return {
                     -- Looks good with vim.o.winborder = true.
                     floats = "transparent",
                 },
-                on_colors = jaco_dark,
+                on_colors = jaco_light,
             })
 
             -- Load the colorscheme here.
