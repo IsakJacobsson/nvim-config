@@ -247,6 +247,14 @@ return {
                     -- Looks good with vim.o.winborder = true.
                     floats = "transparent",
                 },
+                on_highlights = function(hl, c)
+                    hl.LineNr = { fg = c.fg_dark }
+                    hl.LineNrAbove = { fg = c.fg_dark }
+                    hl.LineNrBelow = { fg = c.fg_dark }
+                end,
+                on_colors = function(colors)
+                    colors.comment = colors.fg_dark
+                end,
                 -- on_colors = jaco_light,
             })
 
