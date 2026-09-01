@@ -18,6 +18,23 @@ return {
                     vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = "Gitsigns: " .. desc })
                 end
 
+                -- Navigation
+                map(']c', function()
+                  if vim.wo.diff then
+                    vim.cmd.normal({']c', bang = true})
+                  else
+                    gitsigns.nav_hunk('next')
+                  end
+                end, "Next hunk")
+
+                map('[c', function()
+                  if vim.wo.diff then
+                    vim.cmd.normal({'[c', bang = true})
+                  else
+                    gitsigns.nav_hunk('prev')
+                  end
+                end, "Previous hunk")
+
                 map("<leader>gs", gitsigns.stage_hunk, "Stage hunk")
                 map("<leader>gr", gitsigns.reset_hunk, "Reset hunk")
                 map("<leader>gp", gitsigns.preview_hunk, "Preview hunk")
