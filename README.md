@@ -1,5 +1,9 @@
 # nvim-config
 
+> [!NOTE]
+> **This repository has moved to the
+> [dotfiles repository](https://github.com/IsakJacobsson/dotfiles).**
+
 ## Introduction
 
 Neovim config based on [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
