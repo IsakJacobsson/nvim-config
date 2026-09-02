@@ -34,6 +34,45 @@ vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
+-- [[ Git Rebase Keymaps ]]
+-- These mappings are only active inside `git rebase -i` buffers.
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitrebase",
+    callback = function()
+        local opts = { buffer = true, silent = true }
+
+        local function set_action(action)
+            local line = vim.api.nvim_get_current_line()
+            local new_line = line:gsub("^%s*%w+", action, 1)
+            vim.api.nvim_set_current_line(new_line)
+        end
+
+        vim.keymap.set("n", "<leader>e", function()
+            set_action("edit")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: edit commit" }))
+
+        vim.keymap.set("n", "<leader>r", function()
+            set_action("reword")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: reword commit" }))
+
+        vim.keymap.set("n", "<leader>s", function()
+            set_action("squash")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: squash commit" }))
+
+        vim.keymap.set("n", "<leader>f", function()
+            set_action("fixup")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: fixup commit" }))
+
+        vim.keymap.set("n", "<leader>p", function()
+            set_action("pick")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: pick commit" }))
+
+        vim.keymap.set("n", "<leader>d", function()
+            set_action("drop")
+        end, vim.tbl_extend("force", opts, { desc = "Rebase: drop commit" }))
+    end,
+})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
